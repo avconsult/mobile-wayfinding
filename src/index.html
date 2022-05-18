@@ -128,15 +128,15 @@
 
     <container class="main-container" id="list-container">
 
-        <div id="search-list" class="animate__animated">
+        <div class="search">
+            <input oninput="searchPois()" id="search-bar" type="text" class="searchTerm use-keyboard-input"
+                   placeholder="What are you looking for?">
+            <button type="submit" class="searchButton">
+                <img src="media/magnifiying-glass.png" alt="">
+            </button>
+        </div>
 
-            <div class="search">
-                <input oninput="searchPois()" id="search-bar" type="text" class="searchTerm use-keyboard-input"
-                       placeholder="What are you looking for?">
-                <button type="submit" class="searchButton">
-                    <img src="media/magnifiying-glass.png" alt="">
-                </button>
-            </div>
+        <div id="search-list" class="animate__animated">
 
             <div class="text-list-container animate__animated">
 
@@ -200,6 +200,11 @@
             </ul>
 
         </div>
+
+        <div id="search-results" class="animate__animated" style="display: none; text-align: center">
+            <h3> Search results </h3>
+        </div>
+
 
     </container>
 
@@ -336,7 +341,7 @@
 <script src="scripts/app.js"></script>
 <script src="scripts/tooltips.js"></script>
 <script src="keyboard/keyboard.js"></script>
-<script src="scripts/video.js"> </script>
+<script src="scripts/video.js"></script>
 <script src="scripts/refreshbtn.js"></script>
 <script src="scripts/list-toolbar.js"></script>
 

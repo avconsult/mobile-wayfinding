@@ -1,4 +1,31 @@
+const searchResults = document.getElementById('search-results');
+const poiList = document.getElementById('search-list');
 const searchBar = document.getElementById("search-bar");
+
+const resultsList = [
+    {name: "Power Studio", vid: "power"},
+    {name: "Yoga Studio", vid: "yoga"},
+    {name: "Pilates Studio", vid: "pilates"},
+    {name: "Cycling Dome", vid: "cyclingdome"},
+    {name: "Private Gyms", vid: "vipgym"},
+    {name: "Encore Juice Bar", vid: "juicebar"},
+    {name: "Gym Hall", vid: "gymlower"},
+    {name: "Male Locker Room", vid: "malelocker"},
+    {name: "Male Prayer Area", vid: "maleprayer"},
+    {name: "Female Area", vid: "femalelocker"},
+    {name: "Hair Salon", vid: "hairsalon"},
+    {name: "Barber Shop", vid: "barbershop"},
+    {name: "Female Wet Area", vid: "femalewetarea"},
+    {name: "Male Wet Area", vid: "malewetarea"},
+    {name: "Male Spa", vid: "malespa"},
+    {name: "Female Spa", vid: "femalespa"},
+    {name: "Encore Tea Lounge", vid: "tealounge"},
+    {name: "Pool & Tennis", vid: "swimmingpool"},
+    {name: "Encore Restaurant", vid: "restaurant"},
+    {name: "Cigar Lounge", vid: "cigarlounge"},
+    {name: "CORE X", vid: "corex"},
+    {name: "Bootcamp", vid: "bootcamp"},
+];
 
 let event = new Event('oninput', {
 });
@@ -57,11 +84,10 @@ const Keyboard = {
         }));
         document.querySelectorAll(".use-keyboard-input-onclick").forEach( elt =>
         elt.addEventListener("click", () => {
-            if(searchList.style.display == 'none')
-                showTextList(); // defined in app.js
             searchBar.focus();
             this.open(searchBar.value, currentValue => {
                 searchBar.value = currentValue;
+
             })
         }));
     },
@@ -188,7 +214,14 @@ const Keyboard = {
         this.properties.value = initialValue || "";
         this.eventHandlers.oninput = oninput;
         this.eventHandlers.onclose = onclose;
-        this.elements.main.classList.remove("keyboard--hidden")
+        this.elements.main.classList.remove("keyboard--hidden");
+        searchResults.style.display = 'block';
+        searchResults.classList.add('animate__fadeInRight');
+        // const listItems = document.getElementsByClassName('text-list-container');
+        // for (let i = 0; i < listItems.length; i++){
+        //     listItems.item(i).style.display = 'none';
+        // }
+        poiList.style.display = 'none';
     },
 
     close(){
@@ -198,6 +231,9 @@ const Keyboard = {
         this.eventHandlers.onclose = onclose;
         this.eventHandlers.oninput = oninput;
         this.elements.main.classList.add("keyboard--hidden");
+        searchResults.style.display = 'none';
+        poiList.style.display = 'block';
+        poiList.classList.add('animate__fadeInLeft');
     },
 
 };
@@ -205,3 +241,20 @@ const Keyboard = {
 window.addEventListener("DOMContentLoaded", function(){
     Keyboard.init();
 });
+
+// All list item pois retrieved
+function searchPois(){
+    if(searchInput.value.length > 1) {
+        console.log(searchInput.value);
+        for (let i = 0; i < resultsList.length; i++) {
+            if (resultsList[i].name.toLowerCase().includes(searchInput.value.toLowerCase()))
+                console.log(resultsList[i]);
+            else
+                pointsOfInterest[i].classList.remove('search-result');
+        }
+    } else{
+        for (let i = 0; i < pointsOfInterest.length; i++) {
+            pointsOfInterest[i].classList.remove('search-result');
+        }
+    }
+}

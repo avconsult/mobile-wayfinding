@@ -70,20 +70,6 @@ for (let i = 0; i < poiLists.length; i++) {
     for (let j = 0; j < listContents.length; j++) {
         pointsOfInterest.push(listContents[j]);
     }
-} // All list item pois retrieved
-function searchPois(){
-    if(searchInput.value.length > 1) {
-        for (let i = 0; i < pointsOfInterest.length; i++) {
-            if (pointsOfInterest[i].innerText.toLowerCase().includes(searchInput.value.toLowerCase()))
-                pointsOfInterest[i].classList.add('search-result');
-            else
-                pointsOfInterest[i].classList.remove('search-result');
-        }
-    } else{
-        for (let i = 0; i < pointsOfInterest.length; i++) {
-            pointsOfInterest[i].classList.remove('search-result');
-        }
-    }
 }
 
 
