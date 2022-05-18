@@ -1,460 +1,344 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <!-- Animate.css  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Animate.css  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
-  <!-- Google font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,400&display=swap" rel="stylesheet">
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,400&display=swap"
+          rel="stylesheet">
 
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="styles/poidivs.css">
-  <link rel="stylesheet" href="styles/toggleswitch.css">
-  <link rel="stylesheet" href="styles/toast.css">
-  <link rel="stylesheet" href="keyboard/keyboard.css">
-  <link rel="stylesheet" href="toolbar/toolbar.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="styles/poidivs.css">
+    <link rel="stylesheet" href="styles/toggleswitch.css">
+    <link rel="stylesheet" href="keyboard/keyboard.css">
 
-  <title>CORE Wayfinding</title>
+    <title>CORE Wayfinding</title>
 </head>
 <body>
 
 <nav id="navbar">
 
-<!--  <iframe src="https://free.timeanddate.com/clock/i8ao00ho/n168/tlsa/fn16/fs24/fcfff/tct/pct/tt0/tm2/td2/ts1"-->
-<!--          frameborder="0" width="336" height="30" allowtransparency="true"-->
-<!--          style="position: absolute; top: 1px; right: -22px; pointer-events: none;  ">-->
-<!--  </iframe>-->
-
-  <div style="position: absolute; top: 1px; right: 2px; pointer-events: none;">
-    <h1 style="color: white" id="date-text"></h1>
-    <iframe scrolling="no" frameborder="no" clocktype="html5" style="overflow:hidden;border:0;margin:0;padding:0;width:120px;height:40px;"src="https://www.clocklink.com/html5embed.php?clock=004&timezone=SaudiArabia_Riyadh&color=white&size=120&Title=&Message=&Target=&From=2022,1,1,0,0,0&Color=white"></iframe>
-  </div>
-  <img src="media/CORE%20High%20Logo.png" alt="" class="animate__animated">
-
-
-  <div style="pointer-events: none" id="weather-report">
-    <a class="weatherwidget-io" href="https://forecast7.com/en/24d7146d68/riyadh/" data-label_1="RIYADH" data-label_2="WEATHER" data-icons="Climacons Animated" data-days="3" data-theme="original" >RIYADH WEATHER</a>
-    <script>
-      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-    </script>
-  </div>
-  <div onclick="updateLocalVids()" id="refresh-button" style="display: none; height: 80%" class="animate__animated">
-    <img src="media/refresh.png" alt="">
-    <p style="color: white; font-size: 2vw"> refresh videos </p>
-  </div>
+    <img src="media/CORE%20High%20Logo.png" alt="" class="animate__animated">
 
 </nav>
 
-<div class="toast-area" id="toasts">
-  <div style="display: none">
-    <div class="toast" id="clonemother">
-      <div class="toast-content">
-        <div class="before"></div>
-        <div class="icon">
-          <img src="media/refresh.png" alt="">
-        </div>
-        <div class="text"><p>Refresh requested</p><p class="message"> Local videos will be updated accordingly </p></div>
-        <div onclick="deletethis()" class="close">&#x00D7</div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <section id="main-map">
 
-  <container class="main-container" id="map-container">
+    <container class="main-container" id="map-container">
 
-    <div class="animate__animated" id="my-map">
-      <div id="image-wrapper" class="wrapper" style="position: relative">
+        <div class="animate__animated" id="my-map">
+            <div id="image-wrapper" class="wrapper" style="position: relative">
 
-        <div id="core-gym" class="landmark-block">
+                <div id="core-gym" class="landmark-block">
+                </div>
+                <div id="gym-tooltip" class="tooltip">
+                    <span> CORE Fit </span>
+                    <!--   Play video for this destination on click -->
+                    <button class="go-to-destination" onclick="playvideo('gymmap', false)"> directions</button>
+                </div>
+
+                <div id="core-resto" class="landmark-block">
+                </div>
+                <div id="resto-tooltip" class="tooltip">
+                    <span> Restaurant </span>
+                    <!--   Play video for this destination on click -->
+                    <button class="go-to-destination" onclick="playvideo('restaurant', false)"> directions</button>
+                </div>
+
+                <div id="cigar" class="landmark-block">
+                </div>
+                <div id="cigar-tooltip" class="tooltip">
+                    <span> Cigar Lounge </span>
+                    <!--   Play video for this destination on click -->
+                    <button class="go-to-destination" onclick="playvideo('cigarlounge', false)"> directions</button>
+                </div>
+
+                <div id="meeting" class="landmark-block">
+                </div>
+                <div id="meeting-tooltip" class="tooltip">
+                    <span> Meeting Room </span>
+                    <!--   Play video for this destination on click -->
+                    <button class="go-to-destination" onclick="playvideo('meetinglounge', false)"> directions</button>
+                </div>
+
+                <div id="pool-tennis" class="landmark-block">
+                </div>
+                <div id="pool-tooltip" class="tooltip">
+                    <span> Swimming Pool & Tennis Court </span>
+                    <!--   Play video for this destination on click -->
+                    <button class="go-to-destination" onclick="playvideo('swimmingpool', false)"> directions</button>
+                </div>
+
+                <div id="core-spa" class="landmark-block">
+                </div>
+                <div id="spa-tooltip" class="tooltip">
+                    <span> CORE SPA </span>
+                    <!--   Play video for this destination on click -->
+                    <button class="go-to-destination" onclick="playvideo('spamap', false)"> directions</button>
+                </div>
+
+                <div id="core-x" class="landmark-block">
+                </div>
+                <div id="x-tooltip" class="tooltip">
+                    <span> CORE X </span>
+                    <!--   Play video for this destination on click -->
+                    <button class="go-to-destination" onclick="playvideo('corex', false)"> directions</button>
+                </div>
+
+                <div id="bootcamp" class="landmark-block">
+                </div>
+                <div id="bootcamp-tooltip" class="tooltip">
+                    <span> Bootcamp </span>
+                    <!--   Play video for this destination on click -->
+                    <button class="go-to-destination" onclick="playvideo('bootcamp', false)"> directions</button>
+                </div>
+
+                <img id="upper-img" src="compleximgs/CORE%20SPORT%20COMPLEX%20G-41-CROPPED-PINNED.png">
+                <img style="display: none" id="lower-img" src="compleximgs/CORE%20SPORT%20COMPLEX%20G-4-cropped.png">
+                <img style="" id="touch-here" src="media/animation_640_kvuxwe7w.gif">
+
+            </div>
+
+            <div class="btn-container">
+                <label class="switch btn-color-mode-switch">
+                    <input onclick="toggleFloor(this)" type="checkbox" name="color_mode" id="color_mode" value="1">
+                    <label for="color_mode" data-on="Lower" data-off="Upper"
+                           class="btn-color-mode-switch-inner"></label>
+                </label>
+            </div>
+
         </div>
-        <div id="gym-tooltip" class="tooltip">
-          <span> CORE Fit </span>
-          <!--   Play video for this destination on click -->
-          <button class="go-to-destination" onclick="playvideo('gymmap', false)"> directions </button>
+
+        <div class="video-center">
+            <video style="display: none" class="animate__animated" id="video-player"
+                   type="video/mp4" loop></video>
+            <img src="media/back.png" style="visibility: hidden" id="exit-video" onclick="closeVideo()">
         </div>
 
-        <div id="core-resto" class="landmark-block">
+    </container>
+
+    <container class="main-container" id="list-container">
+
+        <div id="search-list" class="animate__animated">
+
+            <div class="search">
+                <input oninput="searchPois()" id="search-bar" type="text" class="searchTerm use-keyboard-input"
+                       placeholder="What are you looking for?">
+                <button type="submit" class="searchButton">
+                    <img src="media/magnifiying-glass.png" alt="">
+                </button>
+            </div>
+
+            <div class="text-list-container animate__animated">
+
+                <div class="list-column animate__animated" id="core-fit1-list">
+                    <ul class="poi-list">
+                        <li onclick="playvideo('power', false)"> Power Studio</li>
+                        <li onclick="playvideo('yoga', false)"> Yoga Studio</li>
+                        <li onclick="playvideo('pilates', false)"> Pilates Studio</li>
+                        <li onclick="playvideo('cyclingdome', false)"> Cycling Dome</li>
+                        <li onclick="playvideo('vipgym', false)"> Private Gyms</li>
+                        <li onclick="playvideo('juicebar', false)"> Encore Juice Bar</li>
+                    </ul>
+                </div>
+                <div class="list-column animate__animated" id="core-fit2-list" style="display:none;">
+                    <ul class="poi-list">
+                        <li onclick="playvideo('gymlower', false)"> Gym Hall</li>
+                        <li onclick="playvideo('malelocker', false)"> Male Locker Room</li>
+                        <li onclick="playvideo('maleprayer', false)"> Male Prayer Area</li>
+                        <!-- TODO check if female area video not done -->
+                        <li onclick="playvideo('femalelocker', false)"> Female Area</li>
+                        <li onclick="playvideo('femaleprayer', false)" class="long-text"> Female Prayer Room</li>
+                    </ul>
+                </div>
+                <div class="list-column animate__animated" id="core-spa-list" style="display:none">
+                    <ul class="poi-list">
+                        <li onclick="playvideo('hairsalon', false)"> Hair Salon</li>
+                        <li onclick="playvideo('barbershop', false)"> Barber Shop</li>
+                        <li onclick="playvideo('femalewetarea', false)"> Female Wet Area</li>
+                        <li onclick="playvideo('malewetarea', false)"> Male Wet Area</li>
+                        <li onclick="playvideo('malespa', false)" class="long-text"> Male Spa</li>
+                        <li onclick="playvideo('femalespa', false)" class="long-text"> Female Spa</li>
+                        <li onclick="playvideo('tealounge', false)" class="long-text"> Encore Tea Lounge</li>
+                    </ul>
+                </div>
+                <div class="list-column animate__animated" id="core-hotspot-list" style="display:none">
+                    <ul class="poi-list">
+                        <li onclick="playvideo('swimmingpool', false)"> Pool & Tennis</li>
+                        <li onclick="playvideo('restaurant', false)"> Encore Restaurant</li>
+                        <li onclick="playvideo('cigarlounge', false)"> Cigar Lounge</li>
+                        <li onclick="playvideo('meetinglounge', false)"> Meeting Room</li>
+                        <li onclick="playvideo('corex', false)"> CORE X</li>
+                        <li onclick="playvideo('bootcamp', false)"> Bootcamp</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <ul class="poi-toolbar">
+                <li class="toolbar-item active" id="show-fit1">
+                    <p> CORE Fit I </p>
+                </li>
+                <li class="toolbar-item" id="show-fit2">
+                    <p> CORE Fit II </p>
+                </li>
+                <li class="toolbar-item" id="show-spa">
+                    <p> CORE Spa </p>
+                </li>
+                <li class="toolbar-item" id="show-hotspots">
+                    <p> CORE Hotspots </p>
+                </li>
+            </ul>
+
         </div>
-        <div id="resto-tooltip" class="tooltip">
-          <span> Restaurant </span>
-          <!--   Play video for this destination on click -->
-          <button class="go-to-destination" onclick="playvideo('restaurant', false)"> directions </button>
-        </div>
 
-        <div id="cigar" class="landmark-block">
-        </div>
-        <div id="cigar-tooltip" class="tooltip">
-          <span> Cigar Lounge </span>
-          <!--   Play video for this destination on click -->
-          <button class="go-to-destination" onclick="playvideo('cigarlounge', false)"> directions </button>
-        </div>
-
-        <div id="meeting" class="landmark-block">
-        </div>
-        <div id="meeting-tooltip" class="tooltip">
-          <span> Meeting Room </span>
-          <!--   Play video for this destination on click -->
-          <button class="go-to-destination" onclick="playvideo('meetinglounge', false)"> directions </button>
-        </div>
-
-        <div id="pool-tennis" class="landmark-block">
-        </div>
-        <div id="pool-tooltip" class="tooltip">
-          <span> Swimming Pool & Tennis Court </span>
-          <!--   Play video for this destination on click -->
-          <button class="go-to-destination" onclick="playvideo('swimmingpool', false)"> directions </button>
-        </div>
-
-        <div id="core-spa" class="landmark-block">
-        </div>
-        <div id="spa-tooltip" class="tooltip">
-          <span> CORE SPA </span>
-          <!--   Play video for this destination on click -->
-          <button class="go-to-destination" onclick="playvideo('spamap', false)"> directions </button>
-        </div>
-
-        <div id="core-x" class="landmark-block">
-        </div>
-        <div id="x-tooltip" class="tooltip">
-          <span> CORE X </span>
-          <!--   Play video for this destination on click -->
-          <button class="go-to-destination" onclick="playvideo('corex', false)"> directions </button>
-        </div>
-
-        <div id="bootcamp" class="landmark-block">
-        </div>
-        <div id="bootcamp-tooltip" class="tooltip">
-          <span> Bootcamp </span>
-          <!--   Play video for this destination on click -->
-          <button class="go-to-destination" onclick="playvideo('bootcamp', false)"> directions </button>
-        </div>
-
-        <img id="upper-img" src="compleximgs/CORE%20SPORT%20COMPLEX%20G-41-CROPPED-PINNED.png">
-        <img  style="display: none" id="lower-img" src="compleximgs/CORE%20SPORT%20COMPLEX%20G-4-cropped.png">
-        <img style="" id="touch-here" src="media/animation_640_kvuxwe7w.gif">
-
-      </div>
-
-      <div class="btn-container">
-        <label class="switch btn-color-mode-switch">
-          <input onclick="toggleFloor(this)" type="checkbox" name="color_mode" id="color_mode" value="1">
-          <label for="color_mode" data-on="Lower" data-off="Upper" class="btn-color-mode-switch-inner"></label>
-        </label>
-      </div>
-
-    </div>
-
-    <div class="video-center">
-      <video style="display: none" class="animate__animated" id="video-player"
-             type="video/mp4" loop> </video>
-      <img src="media/back.png" style="visibility: hidden" id="exit-video" onclick="closeVideo()">
-    </div>
-
-  </container>
-
-  <container class="main-container" id="list-container">
-
-    <div id="media-div" class="video-center animate__animated">
-      <video id="my-vid" src=""></video>
-    </div>
-
-    <div style="display: none" id="search-list" class="animate__animated">
-
-      <div class="search">
-        <input oninput="searchPois()" id="search-bar" type="text" class="searchTerm use-keyboard-input" placeholder="What are you looking for?">
-        <button type="submit" class="searchButton">
-          <img src="media/magnifiying-glass.png" alt="">
-        </button>
-      </div>
-
-      <div class="text-list-container animate__animated">
-
-        <div class="list-column">
-          <h1> CORE Fit I </h1>
-          <ul class="poi-list">
-            <li onclick="playvideo('power', false)"> Power Studio </li>
-            <li onclick="playvideo('yoga', false)"> Yoga Studio </li>
-            <li onclick="playvideo('pilates', false)"> Pilates Studio </li>
-            <li onclick="playvideo('cyclingdome', false)"> Cycling Dome </li>
-            <li onclick="playvideo('vipgym', false)"> Private Gyms </li>
-            <li onclick="playvideo('juicebar', false)"> Encore Juice Bar </li>
-          </ul>
-        </div>
-        <div class="list-column">
-          <h1> CORE Fit II  </h1>
-          <ul class="poi-list">
-            <li onclick="playvideo('gymlower', false)"> Gym Hall </li>
-            <li onclick="playvideo('malelocker', false)"> Male Locker Room </li>
-            <li onclick="playvideo('maleprayer', false)"> Male Prayer Area </li>
-            <!-- TODO check if female area video not done -->
-            <li onclick="playvideo('femalelocker', false)"> Female Area </li>
-            <li onclick="playvideo('femaleprayer', false)" class="long-text"> Female Prayer Room </li>
-          </ul>
-        </div>
-        <div class="list-column">
-          <h1> CORE Spa </h1>
-          <ul class="poi-list">
-            <li onclick="playvideo('hairsalon', false)"> Hair Salon </li>
-            <li onclick="playvideo('barbershop', false)"  > Barber Shop </li>
-            <li onclick="playvideo('femalewetarea', false)"> Female Wet Area </li>
-            <li onclick="playvideo('malewetarea', false)"> Male Wet Area </li>
-            <li onclick="playvideo('malespa', false)" class="long-text"> Male Spa </li>
-            <li onclick="playvideo('femalespa', false)" class="long-text"> Female Spa </li>
-            <li onclick="playvideo('tealounge', false)" class="long-text"> Encore Tea Lounge </li>
-          </ul>
-        </div>
-        <div class="list-column">
-          <h1> CORE Hot spots </h1>
-          <ul class="poi-list">
-            <li onclick="playvideo('swimmingpool', false)"> Pool & Tennis </li>
-            <li onclick="playvideo('restaurant', false)"> Encore Restaurant</li>
-            <li onclick="playvideo('cigarlounge', false)"> Cigar Lounge </li>
-            <li onclick="playvideo('meetinglounge', false)"> Meeting Room </li>
-            <li onclick="playvideo('corex', false)"> CORE X </li>
-            <li onclick="playvideo('bootcamp', false)"> Bootcamp </li>
-          </ul>
-        </div>
-        
-      </div>
-
-    </div>
-
-  </container>
+    </container>
 
 </section>
 
 <section id="bottom-menu">
 
-  <menu id="toolbar" class="menu">
+    <div id="destinations" class="animate__animated">
 
-    <button onclick="showPoiGrid()" class="menu__item active" style="--bgColorItem: #f8f9ff;" >
-      <img src="media/location.png" alt="" class="toolbar-icon">
-    </button>
+        <div class="animate__animated destinations-slide" id="grid1">
 
-<!--    <button onclick="showLanguages()" class="menu__item" style="&#45;&#45;bgColorItem: #f8f9ff;">-->
-<!--      <img class="toolbar-icon" src="media/translation.png" alt="">-->
-<!--    </button>-->
+            <div class="destinations-grid">
+                <div class="poi-icon" onclick="playvideo('power', false)">
+                    <img class="poi-image" src="media/weightlifting.png" alt="">
+                    <p> Power Studio </p>
+                </div>
+                <div class="poi-icon" onclick="playvideo('pilates', false)">
+                    <img class="poi-image" src="media/pilates.png" alt="">
+                    <p> Pilates Studio </p>
+                </div>
+                <div class="poi-icon" onclick="playvideo('yoga', false)">
+                    <img class="poi-image" src="media/yoga.png" alt="">
+                    <p> Yoga Studio </p>
+                </div>
+                <div class="poi-icon" onclick="playvideo('vipgym', false)">
+                    <img class="poi-image" src="media/fitness(2).png" alt="">
+                    <p> Private Gyms </p>
+                </div>
+                <div class="poi-icon" onclick="playvideo('cyclingdome', false)">
+                    <img class="poi-image" src="media/bycicle.png" alt="">
+                    <p> Cycling Dome </p>
+                </div>
+                <div class="poi-icon" onclick="playvideo('juicebar', false)">
+                    <img class="poi-image" src="media/juice(1).png" alt="">
+                    <p> Juice Bar </p>
+                </div>
+                <div onclick="playvideo('gymlower', false)" class="poi-icon yellow">
+                    <img class="poi-image" src="media/barbell.png" alt="">
+                    <p> Gym Hall </p>
+                </div>
+                <div class="poi-icon light" onclick="playvideo('malelocker', false)">
+                    <img class="poi-image" style="padding-top: 2px" src="media/man.png" alt="">
+                    <p> Male Locker </p>
+                </div>
+                <div class="poi-icon light" onclick="playvideo('femalelocker', false)">
+                    <img class="poi-image" src="media/woman.png" alt="">
+                    <p> Female Area </p>
+                </div>
+                <div class="poi-icon light" onclick="playvideo('maleprayer', false)">
+                    <img class="poi-image" src="media/prayer.png" alt="">
+                    <p> Male Prayer </p>
+                </div>
+                <div class="poi-icon light" onclick="playvideo('femaleprayer', false)">
+                    <img class="poi-image" src="media/prayer.png" alt="">
+                    <p> Female Prayer </p>
+                </div>
+                <div class="poi-icon lighter" onclick="playvideo('swimmingpool', false)">
+                    <img class="poi-image" src="media/swimming(1)(1).png" alt="">
+                    <p> Pool & Tennis </p>
+                </div>
+            </div>
 
-    <button id="list-icon" onclick="showTextList()" class="menu__item" style="--bgColorItem:#f8f9ff;">
-      <img class="toolbar-icon"  src="media/bullet-list.png" style="width: 50px" alt="">
-    </button>
+            <div onclick="slideNext()" class="controls right-controls">
+                <img src="media/chevron.png" style="width: 5vw" alt="">
+            </div>
 
-    <button id="search-icon" class="menu__item use-keyboard-input-onclick" style="--bgColorItem:#f8f9ff;">
-      <img class="toolbar-icon" src="media/search.png" alt="">
-    </button>
-
-    <div id="menu-border" class="menu__border"></div>
-
-  </menu>
-
-  <div class="svg-container">
-
-    <svg viewBox="0 0 202.9 45.5" >
-      <clipPath id="menu" clipPathUnits="objectBoundingBox" transform="scale(0.0049285362247413 0.021978021978022)">
-        <path  d="M6.7,45.5c5.7,0.1,14.1-0.4,23.3-4c5.7-2.3,9.9-5,18.1-10.5c10.7-7.1,11.8-9.2,20.6-14.3c5-2.9,9.2-5.2,15.2-7 c7.1-2.1,13.3-2.3,17.6-2.1c4.2-0.2,10.5,0.1,17.6,2.1c6.1,1.8,10.2,4.1,15.2,7c8.8,5,9.9,7.1,20.6,14.3c8.3,5.5,12.4,8.2,18.1,10.5  c9.2,3.6,17.6,4.2,23.3,4H6.7z"/>
-      </clipPath>
-    </svg>
-
-  </div>
-  <!-- End of toolbar -->
-
-<div id="destinations" style="height: 75%" class="animate__animated">
-
-  <div class="animate__animated destinations-slide" id="grid1">
-
-    <div class=" controls left-controls">
-      <div class="transform-wrapper" id="info-parent">
-        <img id="info-icon" src="media/info.png" alt="">
-        <div id="info-text">
-          <div class="inline-group">
-            <div style="background-color: #9f9f9f" class="color-block"></div>
-            <span style="font-size: 0.45em">: Fit Upper </span>
-          </div>
-          <div class="inline-group">
-            <div style="background-color: #b7b7b7" class="color-block"></div>
-            <span style="font-size: 0.45em">: Fit Lower </span>
-          </div>
-          <div class="inline-group">
-            <div style="background-color: #cccccc" class="color-block"></div>
-            <span style="font-size: 0.45em">:</span><span style="font-size: 0.4em; margin-top: 0.05em"> Pool&Tennis </span>
-          </div>
         </div>
-      </div>
-    </div>
 
-    <div class="destinations-grid">
-      <div class="poi-icon"  onclick="playvideo('power', false)">
-        <img class="poi-image" src="media/weightlifting.png" alt="">
-        <p> Power Studio </p>
-      </div>
-      <div class="poi-icon"  onclick="playvideo('pilates', false)">
-        <img class="poi-image" src="media/pilates.png" alt="">
-        <p> Pilates Studio </p>
-      </div>
-      <div class="poi-icon"  onclick="playvideo('yoga', false)">
-        <img class="poi-image" src="media/yoga.png" alt="">
-        <p> Yoga Studio </p>
-      </div>
-      <div class="poi-icon"  onclick="playvideo('vipgym', false)">
-        <img class="poi-image" src="media/fitness(2).png" alt="">
-        <p> Private Gyms </p>
-      </div>
-      <div class="poi-icon"  onclick="playvideo('cyclingdome', false)">
-        <img class="poi-image" src="media/bycicle.png" alt="">
-        <p> Cycling Dome </p>
-      </div>
-      <div class="poi-icon"  onclick="playvideo('juicebar', false)">
-        <img class="poi-image" src="media/juice(1).png" alt="">
-        <p> Juice Bar </p>
-      </div>
-      <div onclick="playvideo('gymlower', false)" class="poi-icon yellow">
-        <img class="poi-image" src="media/barbell.png" alt="">
-        <p> Gym Hall </p>
-      </div>
-      <div class="poi-icon light"  onclick="playvideo('malelocker', false)">
-        <img class="poi-image" style="padding-top: 2px" src="media/man.png" alt="">
-        <p> Male Locker </p>
-      </div>
-      <div class="poi-icon light"  onclick="playvideo('femalelocker', false)">
-        <img class="poi-image" src="media/woman.png" alt="">
-        <p> Female Area </p>
-      </div>
-      <div class="poi-icon light"  onclick="playvideo('maleprayer', false)">
-        <img class="poi-image" src="media/prayer.png" alt="">
-        <p> Male Prayer </p>
-      </div>
-      <div class="poi-icon light"  onclick="playvideo('femaleprayer', false)">
-        <img class="poi-image" src="media/prayer.png" alt="">
-        <p> Female Prayer </p>
-      </div>
-      <div class="poi-icon lighter"  onclick="playvideo('swimmingpool', false)">
-        <img class="poi-image" src="media/swimming(1)(1).png" alt="">
-        <p> Pool & Tennis </p>
-      </div>
-    </div>
+        <div style="display: none" class="animate__animated destinations-slide" id="grid2">
 
-    <div onclick="slideNext()" class="controls right-controls">
-      <img src="media/chevron.png" style="width: 5vw" alt="">
-    </div>
+            <div class=" controls left-controls">
+                <img src="media/chevron.png" style="width:5vw; transform: rotate(180deg)" onclick="slidePrev()" alt="">
+            </div>
 
-  </div>
+            <div class="destinations-grid">
+                <div class="poi-icon" onclick="playvideo('hairsalon')">
+                    <img class="poi-image" src="media/hair-washing.png" alt="">
+                    <p> Hair Salon </p>
+                </div>
+                <div class="poi-icon" onclick="playvideo('barbershop')">
+                    <img class="poi-image" src="media/barber.png" alt="">
+                    <p> Barber Shop </p>
+                </div>
+                <div class="poi-icon" onclick="playvideo('femalewetarea')">
+                    <img class="poi-image" src="media/female-wet-area.png" alt="">
+                    <p> Female Wet Area </p>
+                </div>
+                <div class="poi-icon" onclick="playvideo('malewetarea')">
+                    <img class="poi-image" src="media/male-wet-area.png" alt="">
+                    <p> Male Wet Area </p>
+                </div>
+                <div class="poi-icon" onclick="playvideo('malespa')">
+                    <img class="poi-image" src="media/therapyroom.png" alt="">
+                    <p> Male Spa Treatment </p>
+                </div>
+                <div class="poi-icon" onclick="playvideo('femalespa')">
+                    <img class="poi-image" src="media/massage.png" alt="">
+                    <p> Female Spa Treatment </p>
+                </div>
+                <div class="poi-icon" onclick="playvideo('tealounge')">
+                    <img class="poi-image" src="media/Tealounge.png" alt="">
+                    <p> Tea Lounge </p>
+                </div>
+                <div class="poi-icon light" onclick="playvideo('restaurant')">
+                    <img class="poi-image" src="media/cutlery.png" alt="">
+                    <p> Restaurant </p>
+                </div>
+                <div class="poi-icon light" onclick="playvideo('meetinglounge')">
+                    <img class="poi-image" src="media/meeting.png" alt="">
+                    <p> Meeting Room </p>
+                </div>
+                <div class="poi-icon light" onclick="playvideo('cigarlounge')">
+                    <img class="poi-image" src="media/cigar.png" alt="">
+                    <p> Cigar Lounge </p>
+                </div>
+                <div class="poi-icon lighter" onclick="playvideo('corex')">
+                    <img class="poi-image" src="media/corex.png" alt="">
+                    <p> CORE X </p>
+                </div>
+                <div class="poi-icon lighter" onclick="playvideo('bootcamp')">
+                    <img class="poi-image" src="media/running-track.png" alt="">
+                    <p> Bootcamp </p>
+                </div>
+            </div>
 
-  <div style="display: none" class="animate__animated destinations-slide" id="grid2">
-
-    <div class=" controls left-controls">
-      <img src="media/chevron.png" style="width:5vw; transform: rotate(180deg)" onclick="slidePrev()" alt="">
-    </div>
-
-    <div class="destinations-grid">
-      <div class="poi-icon"  onclick="playvideo('hairsalon')">
-        <img class="poi-image" src="media/hair-washing.png" alt="">
-        <p> Hair Salon </p>
-      </div>
-      <div class="poi-icon"  onclick="playvideo('barbershop')">
-        <img class="poi-image" src="media/barber.png" alt="">
-        <p> Barber Shop </p>
-      </div>
-      <div class="poi-icon"  onclick="playvideo('femalewetarea')">
-        <img class="poi-image" src="media/female-wet-area.png" alt="">
-        <p> Female Wet Area </p>
-      </div>
-      <div class="poi-icon"  onclick="playvideo('malewetarea')">
-        <img class="poi-image" src="media/male-wet-area.png" alt="">
-        <p> Male Wet Area </p>
-      </div>
-      <div class="poi-icon"  onclick="playvideo('malespa')">
-        <img class="poi-image" src="media/therapyroom.png" alt="">
-        <p> Male Spa Treatment </p>
-      </div>
-      <div class="poi-icon"  onclick="playvideo('femalespa')">
-        <img class="poi-image" src="media/massage.png" alt="">
-        <p> Female Spa Treatment </p>
-      </div>
-      <div class="poi-icon"  onclick="playvideo('tealounge')">
-        <img class="poi-image" src="media/Tealounge.png" alt="">
-        <p> Tea Lounge </p>
-      </div>
-      <div class="poi-icon light"  onclick="playvideo('restaurant')">
-        <img class="poi-image" src="media/cutlery.png" alt="">
-        <p> Restaurant </p>
-      </div>
-      <div class="poi-icon light"  onclick="playvideo('meetinglounge')">
-        <img class="poi-image" src="media/meeting.png" alt="">
-        <p> Meeting Room </p>
-      </div>
-      <div class="poi-icon light"  onclick="playvideo('cigarlounge')">
-        <img class="poi-image" src="media/cigar.png" alt="">
-        <p> Cigar Lounge </p>
-      </div>
-      <div class="poi-icon lighter"  onclick="playvideo('corex')">
-        <img class="poi-image" src="media/corex.png" alt="">
-        <p> CORE X </p>
-      </div>
-      <div class="poi-icon lighter"  onclick="playvideo('bootcamp')">
-        <img class="poi-image" src="media/running-track.png" alt="">
-        <p> Bootcamp </p>
-      </div>
-    </div>
-
-    <div class=" controls right-controls">
-      <div class="transform-wrapper" id="info-parent2">
-        <img id="info-icon2" src="media/info.png" alt="">
-        <div id="info-text2">
-          <div class="inline-group">
-            <div style="background-color: #9f9f9f" class="color-block"></div>
-            <span style="font-size: 0.45em">: Spa </span>
-          </div>
-          <div class="inline-group">
-            <div style="background-color:#b7b7b7" class="color-block"></div>
-            <span style="font-size: 0.45em">:</span><span style="font-size: 0.45em; width: 100%"> Resto&Cigar&Meeting </span>
-          </div>
-          <div class="inline-group">
-            <div style="background-color: #cccccc" class="color-block"></div>
-            <span style="font-size: 0.45em">:</span><span style="font-size: 0.45em; width: 100%"> Bootcamp&CoreX </span>
-          </div>
         </div>
-      </div>
+
     </div>
-
-  </div>
-
-</div>
-
-
-<!--<div style="display: none" class="animate__animated" id="language-list">-->
-
-<!--    <div class="language selected">-->
-<!--      <h1> English </h1>-->
-<!--      <span class="check">✔</span>-->
-<!--    </div>-->
-<!--    <div onclick="changeToArabic()" class="language">-->
-<!--      <h1 style="direction: ltr">  عربي </h1>-->
-<!--      <span> </span>-->
-<!--    </div>-->
-<!--</div>-->
 
 </section>
 
 <!-- JS files -->
 <script src="scripts/carousel.js"></script>
 <script src="scripts/app.js"></script>
-<script data="english" id="script-link" src="scripts/cloudinaryfetch.js"> </script>
-<script src="scripts/tooltips.js"> </script>
+<script src="scripts/tooltips.js"></script>
 <script src="keyboard/keyboard.js"></script>
-<script src="toolbar/toolbar.js"></script>
-<script src="scripts/video.js">
-<script src="scripts/toast.js"></script>
+<script src="scripts/video.js"> </script>
 <script src="scripts/refreshbtn.js"></script>
+<script src="scripts/list-toolbar.js"></script>
 
 </body>
 </html>

@@ -7,7 +7,6 @@ const poiGrid = document.getElementById("destinations");
 // const arabicDiv = langList.childNodes[3];
 
 const searchList = document.getElementById('search-list');
-const mediaDiv = document.getElementById("media-div");
 const listContainer = document.getElementById("list-container");
 
 const searchInput = document.getElementById('search-bar');
@@ -65,23 +64,6 @@ function changeToEnglish(){
     }, 100)
 }
 
-function showTextList(){
-    mediaDiv.style.display = 'none';
-    searchList.style.display = 'block';
-    searchList.classList.add('animate__slideInRight');
-
-    let listButton = toolBar.getElementsByTagName('button')[2];
-    listButton.style.display='none';
-
-    setTimeout( () => {
-        searchList.style.display ='none'
-        mediaDiv.style.display = 'flex';
-        mediaDiv.classList.add('animate__slideInLeft');
-        listButton.style.display = 'flex';
-        listButton.classList.remove('active');
-    }, 120000)
-}
-
 let pointsOfInterest = [];
 for (let i = 0; i < poiLists.length; i++) {
     listContents = poiLists[i].getElementsByTagName('li');
@@ -105,15 +87,3 @@ function searchPois(){
 }
 
 
-
-// Set date
-const dateText = document.getElementById('date-text');
-let date_ob = new Date();
-// current date
-// adjust 0 before single digit date
-let date = ("0" + date_ob.getDate()).slice(-2);
-// current month
-let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-// current year
-let year = date_ob.getFullYear();
-dateText.innerText =   date + "-" + month + "-" + year;

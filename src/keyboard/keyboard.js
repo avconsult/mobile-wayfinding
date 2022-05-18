@@ -189,7 +189,6 @@ const Keyboard = {
         this.eventHandlers.oninput = oninput;
         this.eventHandlers.onclose = onclose;
         this.elements.main.classList.remove("keyboard--hidden")
-        toolBar.style.display = 'none';
     },
 
     close(){
@@ -199,7 +198,6 @@ const Keyboard = {
         this.eventHandlers.onclose = onclose;
         this.eventHandlers.oninput = oninput;
         this.elements.main.classList.add("keyboard--hidden");
-        toolBar.style.display = 'flex';
     },
 
 };

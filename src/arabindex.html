@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="arabstyles.css">
     <link rel="stylesheet" href="styles/poidivs.css">
     <link rel="stylesheet" href="styles/toggleswitch.css">
-    <link rel="stylesheet" href="styles/toast.css">
     <link rel="stylesheet" href="keyboard/keyboard.css">
     <link rel="stylesheet" href="toolbar/toolbar.css">
 
@@ -38,21 +37,6 @@
     </div>
 
 </nav>
-
-<div class="toast-area" id="toasts">
-    <div style="display: none">
-        <div class="toast" id="clonemother">
-            <div class="toast-content">
-                <div class="before"></div>
-                <div class="icon">
-                    <img src="media/refresh.png" alt="">
-                </div>
-                <div class="text"><p>Refresh requested</p><p class="message"> Local videos will be updated accordingly </p></div>
-                <div onclick="deletethis()" class="close">&#x00D7</div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <section id="main-map">
 
@@ -438,12 +422,10 @@
 <!-- JS files -->
 <script src="scripts/carousel.js"></script>
 <script src="scripts/app.js"></script>
-<script data="arabic" id="script-link" src="scripts/cloudinaryfetch.js"> </script>
 <script src="scripts/tooltips.js"> </script>
 <script src="keyboard/keyboard.js"></script>
 <script src="toolbar/toolbar.js"></script>
 <script src="scripts/video.js"> </script>
-<script src="scripts/toast.js"></script>
 <script src="scripts/refreshbtn.js"></script>
 
 </body>

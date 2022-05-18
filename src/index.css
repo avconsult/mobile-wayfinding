@@ -32,10 +32,7 @@ ul{
 }
 
 body{
-  height: 100vh;
-  width: 100vw;
   background-color: #f7f6f5;
-  overflow: hidden;
 }
 @media (min-aspect-ratio: 10/16) {
   body{
@@ -49,18 +46,17 @@ body{
   }
 }
 
-/* These three main sections add up to 100vh */
 /* If more (overflow), check the added margins */
 nav{
   text-align: center;
   width: 100%;
-  height: 12vh;
+  height: 7vh;
   flex-direction: column;
   background: #051c2c;
   padding: 1em;
 }
 nav img{
-  height: 40%;
+  height: 100%;
   width: auto;
   margin-bottom: 1vh;
 }
@@ -73,10 +69,10 @@ nav img{
   left: -9999px !important;
 }
 
-#main-map{
-  /* 100 - 16vh - 8vh */
-  height: 72vh;
-}
+/*#main-map{*/
+/*  !* 100 - 16vh - 8vh *!*/
+/*  height: 72vh;*/
+/*}*/
 
 #touch-here{
   position: absolute;
@@ -107,26 +103,23 @@ nav img{
 
 #bottom-menu{
   background-color: #f7f6f5;
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  height: 16vh;
 }
 
 /* Middle section styles */
 .main-container{
   display: block;
 }
-/* Has 60% height with sibling(list container) at 40%*/
+/* Has 40% height with sibling(list container) at 60%*/
 #map-container {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  height: 60%;
   padding-top: 1vh;
   padding-bottom: 1vh;
   width: 100vw;
+  min-height: 40vh;
 }
 
 /* Video player styles */
@@ -171,37 +164,41 @@ nav img{
 /* Search bar styles */
 /* Destination list styles */
 #list-container{
-  height: 40%;
-  /*overflow-y: scroll;*/
-  overflow-x: hidden;
   background: #f7f6f5;
   color: white;
   transition: background-color 0.8s;
 }
 #search-list{
-  height: 100%;
   background-color: #051c2c;
 }
 .text-list-container{
   padding: 2vh 4vw;
-  min-height: 88%;
+  min-height: 25vh;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   background-color: #051c2c;
   color: white;
 }
 .list-column{
-  /*text-align: center;*/
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
-.list-column ul{
+.poi-list{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.poi-list{
   font-size: 1.4vh;
   padding-left: 0;
-  margin-top: 10%;
 }
-.list-column ul li{
-  padding-top: 0.5vh;
-  padding-bottom: 0.5vh;
-  padding-right: 2vw;
+.poi-list li{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 3vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
 .list-column ul li:focus, .list-column ul li:active{
@@ -225,7 +222,8 @@ nav img{
   border: none;
 }
 .search input{
-  width: 30vw;
+  width: 85%;
+  text-align: center;
   border: none;
   font-size: 1.1em;
 }
@@ -289,9 +287,36 @@ nav img{
   transform: rotate(220deg);
 }
 
+.poi-toolbar{
+  padding: 0  ;
+  background-color: #cea176;
+  width: 100%;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.poi-toolbar > li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid white;
+  min-height: 2em;
+  transition: background-color ease-in-out 0.35s;
+}
+.poi-toolbar > li:last-child{
+  border-right: none;
+  font-size: 0.8em;
+}
+.poi-toolbar > li.active{
+  background-color: #ad743e;
+}
+.poi-toolbar > li > p{
+  pointer-events: none;
+}
 
 /* Bottom menu styling */
 #bottom-menu{
+  margin-top: 2vh;
   animation-duration: 0.8s;
 }
 .destinations-slide{
@@ -309,7 +334,7 @@ nav img{
 }
 .destinations-grid{
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-gap: 0.25vw;
   margin: 0.8vw;

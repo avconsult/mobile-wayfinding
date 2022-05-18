@@ -1,7 +1,6 @@
 const imageMap = document.getElementById("my-map");
 const videoPlayer = document.getElementById("video-player");
 const closeVideoButton = document.getElementById("exit-video");
-const adVid = document.getElementById('my-vid');
 
 function playvideo(vidname){
 
@@ -18,8 +17,6 @@ function playvideo(vidname){
     if(vidname == 'bootcamp' || vidname == 'corex')
         videoPlayer.playbackRate = 0.75;
     videoPlayer.play();
-    // adVid.pause();
-    showTextList();
     setTimeout(function () {
         closeVideoButton.style.visibility = 'visible';
     }, 800);
