@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Animate.css  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,400&display=swap" rel="stylesheet">
+    <!-- Material icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="arabstyles.css">
+    <link rel="stylesheet" href="styles/poidivs.css">
+    <link rel="stylesheet" href="styles/toggleswitch.css">
+    <link rel="stylesheet" href="styles/toast.css">
+    <link rel="stylesheet" href="keyboard/keyboard.css">
+    <link rel="stylesheet" href="toolbar/toolbar.css">
+
+    <title>CORE Wayfinding</title>
+</head>
+<body>
+
+<nav id="navbar">
+
+    <img src="media/CORE%20High%20Logo.png" alt="" class="animate__animated">
+    <div onclick="updateLocalVids()" id="refresh-button" style="display: none; height: 80%" class="animate__animated">
+        <img src="media/refresh.png" alt="">
+        <p style="color: white; font-size: 2vw"> refresh videos </p>
+    </div>
+
+</nav>
+
+<div class="toast-area" id="toasts">
+    <div style="display: none">
+        <div class="toast" id="clonemother">
+            <div class="toast-content">
+                <div class="before"></div>
+                <div class="icon">
+                    <img src="media/refresh.png" alt="">
+                </div>
+                <div class="text"><p>Refresh requested</p><p class="message"> Local videos will be updated accordingly </p></div>
+                <div onclick="deletethis()" class="close">&#x00D7</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="main-map">
+
+    <container class="main-container" id="map-container">
+
+        <div class="animate__animated" id="my-map">
+            <div id="image-wrapper" class="wrapper" style="position: relative">
+
+                <div id="core-gym" class="landmark-block">
+                </div>
+                <div id="gym-tooltip" class="tooltip">
+                    <span> نادي اللياقة </span>
+                    <!--   Play video for this destination on click -->
+                    <button class="go-to-destination" onclick="playvideo('gymmap', true)"> الاتجاهات </button>
+                </div>
+
+                <div id="core-resto" class="landmark-block">
+                </div>
+                <div id="resto-tooltip" class="tooltip">
+                    <span> مطعم أنكور </span>
+                    <!--   Play video for this destination on click -->
+                    <button class="go-to-destination" onclick="playvideo('restaurant', true)"> الاتجاهات </button>
+                </div>
+
+                <div id="cigar" class="landmark-block">
+                </div>
+                <div id="cigar-tooltip" class="tooltip">
+                    <span>صالة السيجار  </span>
+                    <!--   Play video for this destination on click -->
+                    <button class="go-to-destination" onclick="playvideo('cigarlounge', true)"> الاتجاهات </button>
+                </div>
+
+                <div id="meeting" class="landmark-block">
+                </div>
+                <div id="meeting-tooltip" class="tooltip">
+                    <span> غرفة الإجتماعات </span>
+                    <!--   Play video for this destination on click -->
+                    <button class="go-to-destination" onclick="playvideo('meetinglounge', true)"> الاتجاهات </button>
+                </div>
+
+                <div id="pool-tennis" class="landmark-block">
+                </div>
+                <div id="pool-tooltip" class="tooltip">
+                    <span> المسبح والتنس </span>
+                    <!--   Play video for this destination on click -->
+                    <button class="go-to-destination" onclick="playvideo('swimmingpool', true)"> الاتجاهات </button>
+                </div>
+
+                <div id="core-spa" class="landmark-block">
+                </div>
+                <div id="spa-tooltip" class="tooltip">
+                    <span> كور سبا </span>
+                    <!--   Play video for this destination on click -->
+                    <button class="go-to-destination" onclick="playvideo('spamap', true)"> الاتجاهات </button>
+                </div>
+
+                <div id="core-x" class="landmark-block">
+                </div>
+                <div id="x-tooltip" class="tooltip">
+                    <span> كور أكس  </span>
+                    <!--   Play video for this destination on click -->
+                    <button class="go-to-destination" onclick="playvideo('corex')"> الاتجاهات </button>
+                </div>
+
+                <div id="bootcamp" class="landmark-block">
+                </div>
+                <div id="bootcamp-tooltip" class="tooltip">
+                    <span> مخيم التدريب </span>
+                    <!--   Play video for this destination on click -->
+                    <button class="go-to-destination" onclick="playvideo('bootcamp', true)"> الاتجاهات </button>
+                </div>
+
+                <img id="upper-img" src="compleximgs/CORE%20SPORT%20COMPLEX%20G-41-CROPPED-PINNED.png">
+                <img  style="display: none" id="lower-img" src="compleximgs/CORE%20SPORT%20COMPLEX%20G-4-cropped.png">
+                <img style="" id="touch-here" src="media/animation_640_kvuxwe7w.gif">
+
+            </div>
+
+            <div class="btn-container">
+                <label class="switch btn-color-mode-switch">
+                    <input onclick="toggleFloor(this)" type="checkbox" name="color_mode" id="color_mode" value="1">
+                    <label for="color_mode" data-on="السفلي" data-off="العلوي" class="btn-color-mode-switch-inner"></label>
+                </label>
+            </div>
+
+        </div>
+
+        <div class="video-center">
+            <video style="display: none" class="animate__animated" id="video-player"
+                   type="video/mp4" loop> </video>
+            <i style="visibility: hidden" id="exit-video" class="material-icons" onclick="closeVideo()">
+                exit_to_app
+            </i>
+        </div>
+
+    </container>
+
+    <container class="main-container" id="list-container">
+
+        <div id="media-div" class="video-center animate__animated">
+            <video id="my-vid" src=""></video>
+        </div>
+
+        <div style="display: none" id="search-list" class="animate__animated">
+
+            <div class="search">
+                <input oninput="searchPois()" style="text-align: center" id="search-bar" type="text" class="searchTerm use-keyboard-input" placeholder="عما تبحث؟">
+                <button type="submit" class="searchButton">
+                    <i class="material-icons"> search </i>
+                </button>
+            </div>
+
+            <div class="text-list-container animate__animated">
+
+                <div class="list-column">
+                    <h1> اللياقة - العلوي </h1>
+                    <ul class="poi-list">
+                        <li onclick="playvideo('power', true)"> ستوديو القوة </li>
+                        <li onclick="playvideo('yoga', true)"> ستوديو اليوغا </li>
+                        <li onclick="playvideo('pilates', true)"> ستةديو بيلاتيس </li>
+                        <li onclick="playvideo('cyclingdome', true)"> قبة الدراجات </li>
+                        <li onclick="playvideo('vipgym', true)"> الصالات الرياضية خاصة </li>
+                        <li onclick="playvideo('juicebar', true)"> بار العصير - أنكور </li>
+                    </ul>
+                </div>
+                <div class="list-column">
+                    <h1>اللياقة  - السفلي  </h1>
+                    <ul class="poi-list">
+                        <li onclick="playvideo('gymlower', true)"> صالة التمرين </li>
+                        <li onclick="playvideo('malelocker', true)"> غرفة ملابس الرجال </li>
+                        <li onclick="playvideo('maleprayer', true)"> غرفة صلاة الرجال </li>
+                        <!-- TODO check if female area video not done -->
+                        <li onclick="playvideo('femalelocker', true)"> منطقة النساء </li>
+                        <li onclick="playvideo('femaleprayer', true)" class="long-text"> غرفة صلاة التساء </li>
+                    </ul>
+                </div>
+                <div class="list-column">
+                    <h1> كور سبا </h1>
+                    <ul class="poi-list">
+                        <li onclick="playvideo('hairsalon', true)"> صالون الشعر </li>
+                        <li onclick="playvideo('barbershop', true)"  > الحلاق </li>
+                        <li onclick="playvideo('femalewetarea', true)"> المنطقة الرطبة - نساء </li>
+                        <li onclick="playvideo('malewetarea', true)"> المنطقة الرطبة - رجال </li>
+                        <li onclick="playvideo('malespa', true)" class="long-text"> منتجع - رجال </li>
+                        <li onclick="playvideo('femalespa', true)" class="long-text">
+                        </li>
+                        <li onclick="playvideo('tealounge', true)" class="long-text"> ردهة الشاي - أنكور </li>
+                    </ul>
+                </div>
+                <div class="list-column">
+                    <h1> إضافي  </h1>
+                    <ul class="poi-list">
+                        <li onclick="playvideo('swimmingpool', true)"> المسبح والتنس </li>
+                        <li onclick="playvideo('restaurant', true)"> مطعم أنكور </li>
+                        <li onclick="playvideo('cigarlounge', true)"> صالة السيجار </li>
+                        <li onclick="playvideo('meetinglounge', true)"> غرفة الإجتماعات </li>
+                        <li onclick="playvideo('corex', true)"> كور أكس  </li>
+                        <li onclick="playvideo('bootcamp', true)"> مخيم التدريب </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </container>
+
+</section>
+
+<section id="bottom-menu">
+
+    <menu id="toolbar" class="menu">
+
+        <button onclick="showPoiGrid()" class="menu__item active" style="--bgColorItem: #f8f9ff;" >
+            <img src="media/location.png" alt="" class="toolbar-icon">
+        </button>
+
+        <button onclick="showLanguages()" class="menu__item" style="--bgColorItem: #cea176;">
+            <img class="toolbar-icon" src="media/translation.png" alt="">
+        </button>
+
+        <button id="list-icon" onclick="showTextList()" class="menu__item" style="--bgColorItem:#cea176;">
+            <img class="toolbar-icon"  style="width: 50px" src="media/bullet-list.png" alt="">
+        </button>
+
+        <button id="search-icon" class="menu__item use-keyboard-input-onclick" style="--bgColorItem:#cea176;">
+            <img class="toolbar-icon" src="media/search.png" alt="">
+        </button>
+
+        <div id="menu-border" class="menu__border"></div>
+
+    </menu>
+
+    <div class="svg-container">
+
+        <svg viewBox="0 0 202.9 45.5" >
+            <clipPath id="menu" clipPathUnits="objectBoundingBox" transform="scale(0.0049285362247413 0.021978021978022)">
+                <path  d="M6.7,45.5c5.7,0.1,14.1-0.4,23.3-4c5.7-2.3,9.9-5,18.1-10.5c10.7-7.1,11.8-9.2,20.6-14.3c5-2.9,9.2-5.2,15.2-7 c7.1-2.1,13.3-2.3,17.6-2.1c4.2-0.2,10.5,0.1,17.6,2.1c6.1,1.8,10.2,4.1,15.2,7c8.8,5,9.9,7.1,20.6,14.3c8.3,5.5,12.4,8.2,18.1,10.5  c9.2,3.6,17.6,4.2,23.3,4H6.7z"/>
+            </clipPath>
+        </svg>
+
+    </div>
+    <!-- End of toolbar -->
+
+    <div id="destinations" style="height: 75%" class="animate__animated">
+
+        <div class="animate__animated destinations-slide" id="grid1">
+
+            <div class=" controls left-controls">
+                <div class="transform-wrapper" id="info-parent">
+                    <img id="info-icon" src="media/info.png" alt="">
+                    <div id="info-text">
+                        <div class="inline-group">
+                            <div style="background-color: #9f9f9f" class="color-block"></div>
+                            <span style="font-size: 0.45em">: نادي اللياقة العلوي </span>
+                        </div>
+                        <div class="inline-group">
+                            <div style="background-color: #cccccc" class="color-block"></div>
+                            <span style="font-size: 0.45em">: نادي اللياقة السفلي </span>
+                        </div>
+                        <div class="inline-group">
+                            <div style="background-color: #cccccc" class="color-block"></div>
+                            <span style="font-size: 0.45em">:</span><span style="font-size: 0.4em; margin-top: 0.05em"> المسبح والتنس </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="destinations-grid">
+                <div class="poi-icon"  onclick="playvideo('power', true)">
+                    <img class="poi-image" src="media/weightlifting.png" alt="">
+                    <p> ستوديو القوة </p>
+                </div>
+                <div class="poi-icon"  onclick="playvideo('pilates', true)">
+                    <img class="poi-image" src="media/pilates.png" alt="">
+                    <p> ستوديو بيلاتيس </p>
+                </div>
+                <div class="poi-icon"  onclick="playvideo('yoga', true)">
+                    <img class="poi-image" src="media/yoga.png" alt="">
+                    <p> ستوديو اليوغا </p>
+                </div>
+                <div class="poi-icon"  onclick="playvideo('vipgym', true)">
+                    <img class="poi-image" src="media/fitness(2).png" alt="">
+                    <p style="font-size: 0.65em"> الصالات الرياضية خاصة </p>
+                </div>
+                <div class="poi-icon"  onclick="playvideo('cyclingdome', true)">
+                    <img class="poi-image" src="media/bycicle.png" alt="">
+                    <p> قبة الدراجات </p>
+                </div>
+                <div class="poi-icon"  onclick="playvideo('juicebar', true)">
+                    <img class="poi-image" src="media/juice(1).png" alt="">
+                    <p> بار العصير - أنكور </p>
+                </div>
+                <div onclick="playvideo('gymlower', true)" class="poi-icon yellow">
+                    <img class="poi-image" src="media/barbell.png" alt="">
+                    <p> صالة التمرين </p>
+                </div>
+                <div class="poi-icon light"  onclick="playvideo('malelocker', true)">
+                    <img class="poi-image" style="padding-top: 2px"  src="media/man.png" alt="">
+                    <p> غرفة ملابس الرجال </p>
+                </div>
+                <div class="poi-icon light"  onclick="playvideo('femalelocker', true)">
+                    <img class="poi-image" src="media/woman.png" alt="">
+                    <p> منطقة النساء </p>
+                </div>
+                <div class="poi-icon light"  onclick="playvideo('maleprayer', true)">
+                    <img class="poi-image" src="media/prayer.png" alt="">
+                    <p> غرفة صلاة الرجال </p>
+                </div>
+                <div class="poi-icon light"  onclick="playvideo('femaleprayer', true)">
+                    <img class="poi-image" src="media/prayer.png" alt="">
+                    <p> غرفة صلاة التساء </p>
+                </div>
+                <div class="poi-icon lighter"  onclick="playvideo('swimmingpool', true)">
+                    <img class="poi-image" src="media/swimming(1)(1).png" alt="">
+                    <p> المسبح والتنس </p>
+                </div>
+            </div>
+
+            <div onclick="slideNext()" class="controls right-controls">
+                <img src="media/chevron.png" style="width: 5vw" alt="">
+            </div>
+
+        </div>
+
+        <div style="display: none" class="animate__animated destinations-slide" id="grid2">
+
+            <div class=" controls left-controls">
+                <img src="media/chevron.png" style="width:5vw; transform: rotate(180deg)" onclick="slidePrev()" alt="">
+            </div>
+
+            <div class="destinations-grid">
+                <div class="poi-icon"  onclick="playvideo('hairsalon')">
+                    <img class="poi-image" src="media/hair-washing.png" alt="">
+                    <p> صالون الشعر </p>
+                </div>
+                <div class="poi-icon"  onclick="playvideo('barbershop')">
+                    <img class="poi-image" src="media/barber.png" alt="">
+                    <p> الحلاق  </p>
+                </div>
+                <div class="poi-icon"  onclick="playvideo('femalewetarea')">
+                    <img class="poi-image" src="media/female-wet-area.png" alt="">
+                    <p> المنطقة الرطبة - نساء </p>
+                </div>
+                <div class="poi-icon"  onclick="playvideo('malewetarea')">
+                    <img class="poi-image" src="media/male-wet-area.png" alt="">
+                    <p> المنطقة الرطبة - رجال </p>
+                </div>
+                <div class="poi-icon"  onclick="playvideo('malespa')">
+                    <img class="poi-image" src="media/therapyroom.png" alt="">
+                    <p> منتجع - رجال </p>
+                </div>
+                <div class="poi-icon"  onclick="playvideo('femalespa')">
+                    <img class="poi-image" src="media/massage.png" alt="">
+                    <p> منتجع - نساء </p>
+                </div>
+                <div class="poi-icon"  onclick="playvideo('tealounge')">
+                    <img class="poi-image" src="media/Tealounge.png" alt="">
+                    <p> ردهة الشاي - أنكور </p>
+                </div>
+                <div class="poi-icon light"  onclick="playvideo('restaurant')">
+                    <img class="poi-image" src="media/cutlery.png" alt="">
+                    <p> مطعم أنكور </p>
+                </div>
+                <div class="poi-icon light"  onclick="playvideo('meetinglounge')">
+                    <img class="poi-image" src="media/meeting.png" alt="">
+                    <p> غرفة الإجتماعات </p>
+                </div>
+                <div class="poi-icon light"  onclick="playvideo('cigarlounge')">
+                    <img class="poi-image" src="media/cigar.png" alt="">
+                    <p> صالة السيجار </p>
+                </div>
+                <div class="poi-icon lighter"  onclick="playvideo('corex')">
+                    <img class="poi-image" src="media/corex.png" alt="">
+                    <p> كور أكس  </p>
+                </div>
+                <div class="poi-icon lighter"  onclick="playvideo('bootcamp')">
+                    <img class="poi-image" src="media/running-track.png" alt="">
+                    <p> مخيم التدريب </p>
+                </div>
+            </div>
+
+            <div class=" controls right-controls">
+                <div class="transform-wrapper" id="info-parent2">
+                    <img id="info-icon2" src="media/info.png" alt="">
+                    <div id="info-text2">
+                        <div class="inline-group">
+                            <div style="background-color: #9f9f9f" class="color-block"></div>
+                            <span style="font-size: 0.45em">: سبا </span>
+                        </div>
+                        <div class="inline-group">
+                            <div style="background-color:#b7b7b7" class="color-block"></div>
+                            <span style="font-size: 0.45em">:</span><span style="font-size: 0.45em; width: 100%"> مطعم&السيجار&الإجتماعات </span>
+                        </div>
+                        <div class="inline-group">
+                            <div style="background-color: #cccccc" class="color-block"></div>
+                            <span style="font-size: 0.45em">:</span><span style="font-size: 0.45em; width: 100%"> مخيم التدريب&كور أكس  </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div style="display: none" class="animate__animated" id="language-list">
+
+        <div onclick="changeToEnglish()" class="language">
+            <h1> English </h1>
+            <span> </span>
+        </div>
+        <div class="language selected">
+            <h1 style="direction: ltr">  عربي </h1>
+            <span class="check">✔</span>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- JS files -->
+<script src="scripts/carousel.js"></script>
+<script src="scripts/app.js"></script>
+<script data="arabic" id="script-link" src="scripts/cloudinaryfetch.js"> </script>
+<script src="scripts/tooltips.js"> </script>
+<script src="keyboard/keyboard.js"></script>
+<script src="toolbar/toolbar.js"></script>
+<script src="scripts/video.js"> </script>
+<script src="scripts/toast.js"></script>
+<script src="scripts/refreshbtn.js"></script>
+
+</body>
+</html>

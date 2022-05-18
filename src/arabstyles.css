@@ -1,0 +1,13 @@
+
+body{
+    direction:ltr;
+}
+
+.list-column{
+    text-align: right;
+}
+
+.list-column ul li{
+    padding-right: 0;
+    padding-left: 2vw;
+}
