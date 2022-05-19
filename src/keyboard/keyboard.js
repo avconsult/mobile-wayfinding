@@ -27,12 +27,11 @@ const resultsList = [
     {name: "Bootcamp", vid: "bootcamp"},
 ];
 
-let event = new Event('oninput', {
-});
+let event = new Event('oninput', {});
 
 const Keyboard = {
 
-    elements:{
+    elements: {
         main: null,
         keysContainer: null,
         closeButton: null,
@@ -49,13 +48,13 @@ const Keyboard = {
         capsLock: false
     },
 
-    init(){
-    //  CREATE MAIN ELEMENTS
+    init() {
+        //  CREATE MAIN ELEMENTS
         this.elements.main = document.createElement("div");
         this.elements.keysContainer = document.createElement("div");
         this.elements.closeButton = document.createElement("div");
 
-    //  SETUP MAIN ELEMENTS
+        //  SETUP MAIN ELEMENTS
         this.elements.main.classList.add("keyboard", "keyboard--hidden");
         this.elements.keysContainer.classList.add("keyboard__keys");
         this.elements.closeButton.classList.add("closebutton");
@@ -69,31 +68,31 @@ const Keyboard = {
 
         this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard__key");
 
-    //   ADD TO DOM
+        //   ADD TO DOM
         this.elements.main.appendChild(this.elements.keysContainer);
         this.elements.main.appendChild(this.elements.closeButton);
         const footerSection = document.getElementById("bottom-menu");
         footerSection.appendChild(this.elements.main);
 
-    //   AUTOMATICALLY USE WITH ELTS WITH use-keyboard CLASS
-        document.querySelectorAll(".use-keyboard-input").forEach( elt =>
-        elt.addEventListener("focus", () => {
-            this.open(elt.value, currentValue => {
-                elt.value = currentValue;
-            })
-        }));
-        document.querySelectorAll(".use-keyboard-input-onclick").forEach( elt =>
-        elt.addEventListener("click", () => {
-            searchBar.focus();
-            this.open(searchBar.value, currentValue => {
-                searchBar.value = currentValue;
+        //   AUTOMATICALLY USE WITH ELTS WITH use-keyboard CLASS
+        document.querySelectorAll(".use-keyboard-input").forEach(elt =>
+            elt.addEventListener("focus", () => {
+                this.open(elt.value, currentValue => {
+                    elt.value = currentValue;
+                })
+            }));
+        document.querySelectorAll(".use-keyboard-input-onclick").forEach(elt =>
+            elt.addEventListener("click", () => {
+                searchBar.focus();
+                this.open(searchBar.value, currentValue => {
+                    searchBar.value = currentValue;
 
-            })
-        }));
+                })
+            }));
     },
 
-    _createKeys(isEnglish){
-    //    CREATE DOM FRAGMENTS
+    _createKeys(isEnglish) {
+        //    CREATE DOM FRAGMENTS
         const fragment = document.createDocumentFragment();
         const keyLayout = [
             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "backspace",
@@ -117,7 +116,7 @@ const Keyboard = {
 
             "space"
         ]; // Removed for now: ",", ".", "?",
-    //    CREATE HTML FOR ICON
+        //    CREATE HTML FOR ICON
         const createIconHTML = (icon_name) => {
             return `<img src="media/${icon_name}.png" class="keyboard-img" </img>`;
         }
@@ -132,16 +131,16 @@ const Keyboard = {
             keyElement.setAttribute("type", "button");
             keyElement.classList.add("keyboard__key");
 
-            switch (key){
+            switch (key) {
                 case "backspace":
                     keyElement.classList.add("keyboard__key--wide");
                     keyElement.innerHTML = createIconHTML("backspace");
                     keyElement.addEventListener("click", () => {
-                       this.properties.value = this.properties.value.substring(0, this.properties.value.length-1);
-                       this._triggerEvent("oninput");
+                        this.properties.value = this.properties.value.substring(0, this.properties.value.length - 1);
+                        this._triggerEvent("oninput");
                     });
                     break;
-            // Removed enter for now since no sentences case insensitive search
+                // Removed enter for now since no sentences case insensitive search
                 // case "caps":
                 //     keyElement.classList.add("keyboard__key--wide", "keyboard__key--activatable");
                 //     keyElement.innerHTML = createIconHTML("keyboard_capslock");
@@ -150,7 +149,7 @@ const Keyboard = {
                 //         keyElement.classList.toggle("keyboard__key--active", this.properties.capsLock);
                 //     });
                 //     break;
-            // Removed enter for now since no sentences
+                // Removed enter for now since no sentences
                 // case "enter":
                 //     keyElement.classList.add("keyboard__key--wide");
                 //     keyElement.innerHTML = createIconHTML("keyboard_return");
@@ -186,7 +185,7 @@ const Keyboard = {
             }
 
             fragment.appendChild(keyElement);
-            if(insertLineBreak)
+            if (insertLineBreak)
                 fragment.appendChild(document.createElement("br"));
 
         });
@@ -194,23 +193,23 @@ const Keyboard = {
         return fragment;
     },
 
-    _triggerEvent(handlerName){
-        if (typeof this.eventHandlers[handlerName] == "function"){
+    _triggerEvent(handlerName) {
+        if (typeof this.eventHandlers[handlerName] == "function") {
             this.eventHandlers[handlerName](this.properties.value);
         }
         searchBar.dispatchEvent(new Event('input'));
     },
 
-    _toggleCapsLock(){
+    _toggleCapsLock() {
         this.properties.capsLock = !this.properties.capsLock;
         console.log(this.properties.capsLock);
-        for(const key of this.elements.keys){
-            if(key.childElementCount === 0)
-               key.textContent = this.properties.capsLock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
+        for (const key of this.elements.keys) {
+            if (key.childElementCount === 0)
+                key.textContent = this.properties.capsLock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
         }
     },
 
-    open(initialValue, oninput, onclose){
+    open(initialValue, oninput, onclose) {
         this.properties.value = initialValue || "";
         this.eventHandlers.oninput = oninput;
         this.eventHandlers.onclose = onclose;
@@ -224,7 +223,7 @@ const Keyboard = {
         poiList.style.display = 'none';
     },
 
-    close(){
+    close() {
         searchBar.value = "";
         searchPois();
         this.properties.value = ""; // reset the value
@@ -238,23 +237,31 @@ const Keyboard = {
 
 };
 
-window.addEventListener("DOMContentLoaded", function(){
+window.addEventListener("DOMContentLoaded", function () {
     Keyboard.init();
 });
 
-// All list item pois retrieved
-function searchPois(){
-    if(searchInput.value.length > 1) {
-        console.log(searchInput.value);
+const resultContainer = document.getElementById('results-list');
+function searchPois() {
+    if (searchInput.value.length > 1) {
         for (let i = 0; i < resultsList.length; i++) {
-            if (resultsList[i].name.toLowerCase().includes(searchInput.value.toLowerCase()))
-                console.log(resultsList[i]);
-            else
-                pointsOfInterest[i].classList.remove('search-result');
+            if (resultsList[i].name.toLowerCase().includes(searchInput.value.toLowerCase())) {
+                if (!document.getElementById(resultsList[i].name.replaceAll(' ', ''))) {
+                    let listElt = document.createElement("li");
+                    listElt.innerText = resultsList[i].name;
+                    listElt.id = resultsList[i].name.replaceAll(' ', '');
+                    listElt.addEventListener('click', () => playvideo(resultsList[i].vid, false));
+                    resultContainer.appendChild(listElt);
+                }
+            } else {
+                if (document.getElementById(resultsList[i].name.replaceAll(' ', ''))) {
+                    document.getElementById(resultsList[i].name.replaceAll(' ', '')).remove();
+                }
+            }
         }
-    } else{
-        for (let i = 0; i < pointsOfInterest.length; i++) {
-            pointsOfInterest[i].classList.remove('search-result');
+    } else {
+        while (resultContainer.firstChild) {
+            resultContainer.removeChild(resultContainer.firstChild);
         }
     }
 }

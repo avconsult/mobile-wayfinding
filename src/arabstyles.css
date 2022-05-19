@@ -3,11 +3,11 @@ body{
     direction:ltr;
 }
 
-.list-column{
+.list-container{
     text-align: right;
 }
 
-.list-column ul li{
+.list-container ul li{
     padding-right: 0;
     padding-left: 2vw;
 }

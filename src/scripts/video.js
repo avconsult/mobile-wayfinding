@@ -29,5 +29,4 @@ function closeVideo(){
     imageMap.classList.add('animate__fadeInLeft');
     videoPlayer.pause();
     videoPlayer.currentTime = 0;
-    adVid.play();
 }

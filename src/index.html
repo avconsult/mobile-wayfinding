@@ -140,7 +140,7 @@
 
             <div class="text-list-container animate__animated">
 
-                <div class="list-column animate__animated" id="core-fit1-list">
+                <div class="list-container animate__animated" id="core-fit1-list">
                     <ul class="poi-list">
                         <li onclick="playvideo('power', false)"> Power Studio</li>
                         <li onclick="playvideo('yoga', false)"> Yoga Studio</li>
@@ -150,7 +150,7 @@
                         <li onclick="playvideo('juicebar', false)"> Encore Juice Bar</li>
                     </ul>
                 </div>
-                <div class="list-column animate__animated" id="core-fit2-list" style="display:none;">
+                <div class="list-container animate__animated" id="core-fit2-list" style="display:none;">
                     <ul class="poi-list">
                         <li onclick="playvideo('gymlower', false)"> Gym Hall</li>
                         <li onclick="playvideo('malelocker', false)"> Male Locker Room</li>
@@ -160,7 +160,7 @@
                         <li onclick="playvideo('femaleprayer', false)" class="long-text"> Female Prayer Room</li>
                     </ul>
                 </div>
-                <div class="list-column animate__animated" id="core-spa-list" style="display:none">
+                <div class="list-container animate__animated" id="core-spa-list" style="display:none">
                     <ul class="poi-list">
                         <li onclick="playvideo('hairsalon', false)"> Hair Salon</li>
                         <li onclick="playvideo('barbershop', false)"> Barber Shop</li>
@@ -171,7 +171,7 @@
                         <li onclick="playvideo('tealounge', false)" class="long-text"> Encore Tea Lounge</li>
                     </ul>
                 </div>
-                <div class="list-column animate__animated" id="core-hotspot-list" style="display:none">
+                <div class="list-container animate__animated" id="core-hotspot-list" style="display:none">
                     <ul class="poi-list">
                         <li onclick="playvideo('swimmingpool', false)"> Pool & Tennis</li>
                         <li onclick="playvideo('restaurant', false)"> Encore Restaurant</li>
@@ -201,8 +201,12 @@
 
         </div>
 
-        <div id="search-results" class="animate__animated" style="display: none; text-align: center">
-            <h3> Search results </h3>
+        <div id="search-results" class="animate__animated" style="display: none; text-align: center; min-height: 20vh; padding-bottom: 3vh">
+            <h3 style="padding-top: 2vh"> Search results </h3>
+            <p style="font-style: italic; font-size: 0.6em; margin-bottom: 2vh"> type at least two characters </p>
+            <div class="list-container">
+                <ul class="poi-list" id="results-list"></ul>
+            </div>
         </div>
 
 

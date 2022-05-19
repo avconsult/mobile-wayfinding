@@ -195,7 +195,7 @@ nav img {
     color: white;
 }
 
-.list-column {
+.list-container {
     width: 100%;
     display: flex;
     align-items: center;
@@ -221,11 +221,11 @@ nav img {
     margin-bottom: 1vh;
 }
 
-.list-column ul li:focus, .list-column ul li:active {
+.list-container ul li:focus, .list-container ul li:active {
     background-color: #0c456d !important;
 }
 
-.list-column:last-child ul li {
+.list-container:last-child ul li {
     padding-right: 1vw;
 }
 
